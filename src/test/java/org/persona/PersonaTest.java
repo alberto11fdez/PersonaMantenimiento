@@ -19,7 +19,7 @@ public class PersonaTest {
         String gender1 = persona1.gender();
         String expectedValue = "";
 
-        assertNotEquals(expectedValue.toLowerCase(),gender1.toLowerCase());
+        assertTrue(gender1.toUpperCase().equals("MALE") || gender1.toUpperCase().equals("FEMALE"));
     }
 
     @Test
@@ -44,6 +44,13 @@ public class PersonaTest {
        int age1 = persona1.age();
        int expectedValue = 20;
        assertEquals(expectedValue,age1);
+    }
+
+    @Test
+    void AgeOfPerson1Range(){
+        int age1 = persona1.age();
+        int expectedValue = 20;
+        assertTrue(age1>=0 && age1 <=150);
     }
 
     @Test
