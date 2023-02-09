@@ -79,8 +79,20 @@ public class Persona {
                 contFemale++;
             }
         }
-        average[0] = ageMale/contMale;
-        average[1] = ageFemale/contFemale;
+
+        if(persons.isEmpty()){
+            throw new AverageEmpty("No existen personas");
+        }else if(ageMale == 0 ){
+            average[0] = 0;
+            average[1] = ageFemale/contFemale;
+        }else if(ageFemale == 0){
+            average [0] = ageMale/contMale;
+            average [1] = 0;
+        }else{
+            average[0] = ageMale/contMale;
+            average[1] = ageFemale/contFemale;
+        }
+
         return average;
     }
 

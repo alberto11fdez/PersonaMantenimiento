@@ -8,9 +8,9 @@ public class main {
         Persona p1 = new Persona("Pepe", 12, "mAle");
         Persona p2 = new Persona("Juan", 70, "MaLe");
         Persona p3 = new Persona("Alberto", 20, "maLe");
-        Persona p4 = new Persona("Lucia", 12, "female");
-        Persona p5 = new Persona("Barbara", 20, "Female");
-        Persona p6 = new Persona("Marta", 70, "femAle");
+        Persona p4 = new Persona("Lucia", 12, "male");
+        Persona p5 = new Persona("Barbara", 20, "male");
+        Persona p6 = new Persona("Marta", 70, "male");
 
         List<Persona> lista = new LinkedList<Persona>();
         lista.add(p1);
@@ -23,5 +23,10 @@ public class main {
         Persona x = new Persona("a",1,"male");
 
         System.out.println("Media Hombre: " + x.averageAgePerGender(lista)[0] + ", Media Mujeres: " + x.averageAgePerGender(lista)[1]);
+
+        List<Persona> lista1 = new LinkedList<Persona>();
+
+
+        System.out.println(p1.averageAgePerGender(lista1));
     }
 }
