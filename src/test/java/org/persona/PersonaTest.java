@@ -1,9 +1,6 @@
 package org.persona;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.After;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -11,51 +8,51 @@ import java.util.List;
 
 
 public class PersonaTest {
-    Persona persona1 = new Persona("David",20,"male");
+    Persona persona = new Persona("David",20,"male");
 
 //----------------------------------------------------------------------------------------------------------------------
     @Test
-    void GenderOfPerson1IsNotEmpty(){
-        String gender1 = persona1.gender();
+    void GenderOfPersonIsNotEmpty(){
+        String gender = persona.gender();
         String expectedValue = "";
 
-        assertTrue(gender1.toUpperCase().equals("MALE") || gender1.toUpperCase().equals("FEMALE"));
+        assertTrue(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE"));
     }
 
     @Test
-    void NameOfPerson1IsNotEmpty(){
-        String gender1 = persona1.name();
+    void NameOfPersonIsNotEmpty(){
+        String gender = persona.name();
         String expectedValue = "";
 
-        assertNotEquals(expectedValue.toLowerCase(),gender1.toLowerCase());
+        assertNotEquals(expectedValue.toLowerCase(),gender.toLowerCase());
     }
 
     @Test
-    void GenderOfPerson1(){
+    void GenderOfPerson(){
 
-        String gender1 = persona1.gender();
+        String gender = persona.gender();
         String expectedValue = "Male";
 
-        assertEquals(expectedValue.toLowerCase(),gender1.toLowerCase());
+        assertEquals(expectedValue.toLowerCase(),gender.toLowerCase());
     }
 
     @Test
-    void AgeOfPerson1(){
-       int age1 = persona1.age();
+    void AgeOfPerson(){
+       int age = persona.age();
        int expectedValue = 20;
-       assertEquals(expectedValue,age1);
+       assertEquals(expectedValue,age);
     }
 
     @Test
-    void AgeOfPerson1Range(){
-        int age1 = persona1.age();
+    void AgeOfPersonRange(){
+        int age = persona.age();
         int expectedValue = 20;
-        assertTrue(age1>=0 && age1 <=150);
+        assertTrue(age>=0 && age<=150);
     }
 
     @Test
-    void NameOfPerson1(){
-       String name1 = persona1.name();
+    void NameOfThePerson(){
+       String name1 = persona.name();
        String expectedValue = "David";
        assertEquals(expectedValue.toUpperCase(), name1.toUpperCase());
     }
@@ -78,7 +75,7 @@ public class PersonaTest {
         lista.add(p5);
         lista.add(p6);
 
-       double[] media = persona1.averageAgePerGender(lista);
+       double[] media = persona.averageAgePerGender(lista);
        double[] expectedValue = new double[2];
        expectedValue[0] = 34;
        expectedValue[1] = 34;
@@ -100,7 +97,7 @@ public class PersonaTest {
         lista.add(p3);
 
 
-        double[] media = persona1.averageAgePerGender(lista);
+        double[] media = persona.averageAgePerGender(lista);
         double[] expectedValue = new double[2];
         expectedValue[0] = 34;
         expectedValue[1] = 0;
@@ -120,7 +117,7 @@ public class PersonaTest {
         lista.add(p5);
         lista.add(p6);
 
-        double[] media = persona1.averageAgePerGender(lista);
+        double[] media = persona.averageAgePerGender(lista);
         double[] expectedValue = new double[2];
         expectedValue[0] = 0;
         expectedValue[1] = 34;
@@ -130,7 +127,7 @@ public class PersonaTest {
 
     @Test
     void CheckAverageEmpty(){
-        assertThrows(AverageEmpty.class, () -> persona1.averageAgePerGender(new LinkedList<>()));
+        assertThrows(AverageEmpty.class, () -> persona.averageAgePerGender(new LinkedList<>()));
 
     }
 
