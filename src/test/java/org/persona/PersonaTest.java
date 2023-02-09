@@ -8,17 +8,30 @@ import org.junit.jupiter.api.Test;
 
 
 public class PersonaTest {
-    Persona p = new Persona("Pepe",12,"Male");
+    Persona persona1 = new Persona("Pepe",12,"Male");
+
+//----------------------------------------------------------------------------------------------------------------------
+   @Test
+    void GenderOfPerson1(){
+
+        String gender1 = persona1.gender();
+        String expectedValue = "Male";
+
+        assertEquals(expectedValue.toLowerCase(),gender1.toLowerCase());
+    }
+
 
 
     @Test
-    void PersonGenderNotExist(){
-        assertThrows(NoGenderException.class, () -> p.gender());
+    void Person1GenderNotExist(){
+        assertThrows(AgeNegativeException.class, () -> persona1.gender());
     }
 
     @Test
-    void PersonAgeNegative(){
-        assertThrows(AgeNegativeException.class, () -> p.age());
+    void Person1AgeNegative(){
+        assertThrows(AgeNegativeException.class, () -> persona1.age());
     }
+
+
 
 }

@@ -1,4 +1,5 @@
 package org.persona;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -29,19 +30,25 @@ public class Persona {
             this.age = age;
         }
 
-        if(gender.toUpperCase() != "Male" || gender.toUpperCase() != "Female"){
-            throw new NoGenderException("No existe ese genero");
+        if(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE")){
+            this.gender = gender.toUpperCase();
         }else{
-            this.gender = gender;
+            throw new NoGenderException("No existe ese genero");
         }
 
     }
 
-    public String name(){ return name;}
+    public String name(){
+        return name;
+    }
 
-    public int age() { return age; }
+    public int age() {
+
+        return age;
+    }
 
     public String gender(){
+
         return gender;
     }
 
@@ -61,13 +68,13 @@ public class Persona {
         int ageMale=0;
         int ageFemale=0;
 
-        double [] average = null;
+        double [] average = new double[2];
 
         for (int i = 0; i < persons.size(); i++){
-            if(persons.get(i).gender == "Male"){
+            if(persons.get(i).gender.toUpperCase().equals("MALE")){
                 ageMale += persons.get(i).age;
                 contMale++;
-            }else if(persons.get(i).gender == "Female"){
+            }else if(persons.get(i).gender.toUpperCase().equals("FEMALE")){
                 ageFemale += persons.get(i).age;
                 contFemale++;
             }
@@ -76,5 +83,6 @@ public class Persona {
         average[1] = ageFemale/contFemale;
         return average;
     }
+
 
 }
