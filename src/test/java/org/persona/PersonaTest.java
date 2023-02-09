@@ -9,15 +9,9 @@ import java.util.List;
 
 public class PersonaTest {
     Persona persona = new Persona("David",20,"male");
+    Persona p1 = new Persona("", 20, "male");
 
-//----------------------------------------------------------------------------------------------------------------------
-    @Test
-    void GenderOfPersonIsNotEmpty(){
-        String gender = persona.gender();
-        String expectedValue = "";
-
-        assertTrue(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE"));
-    }
+//Name------------------------------------------------------------------------------------------------------------------
 
     @Test
     void NameOfPersonIsNotEmpty(){
@@ -25,6 +19,32 @@ public class PersonaTest {
         String expectedValue = "";
 
         assertNotEquals(expectedValue.toLowerCase(),gender.toLowerCase());
+    }
+
+
+
+    @Test
+    void NameOfThePerson(){
+        String name1 = persona.name();
+        String expectedValue = "David";
+        assertEquals(expectedValue.toUpperCase(), name1.toUpperCase());
+    }
+
+    /*
+    @Test
+    void NameOfPersonIsNotEmpty(){
+        assertThrows(NameEmptyException.class, () -> persona.name());
+    }
+
+     */
+
+//Gender----------------------------------------------------------------------------------------------------------------
+    @Test
+    void GenderOfPersonIsNotEmpty(){
+        String gender = persona.gender();
+        String expectedValue = "";
+
+        assertTrue(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE"));
     }
 
     @Test
@@ -35,6 +55,15 @@ public class PersonaTest {
 
         assertEquals(expectedValue.toLowerCase(),gender.toLowerCase());
     }
+/*
+    @Test
+    void GenderPersonNotExist(){
+        assertThrows(GenderPersonNotExist().class, () -> persona.gender());
+    }
+
+ */
+
+//Age-------------------------------------------------------------------------------------------------------------------
 
     @Test
     void AgeOfPerson(){
@@ -50,12 +79,15 @@ public class PersonaTest {
         assertTrue(age>=0 && age<=150);
     }
 
+    /*
     @Test
-    void NameOfThePerson(){
-       String name1 = persona.name();
-       String expectedValue = "David";
-       assertEquals(expectedValue.toUpperCase(), name1.toUpperCase());
+    void AgeOfPersoneNotNegative(){
+        assertThrows(AgeNegativeException.class, () -> persona.age());
     }
+
+     */
+
+//Average---------------------------------------------------------------------------------------------------------------
 
     @Test
     void CheckAverageWithMalesAndFemales(){
@@ -130,21 +162,5 @@ public class PersonaTest {
         assertThrows(AverageEmpty.class, () -> persona.averageAgePerGender(new LinkedList<>()));
 
     }
-
-    /*@Test
-    void Person1GenderNotExist(){
-        assertThrows(AgeNegativeException.class, () -> persona1.gender());
-    }
-
-    @Test
-    void Person1AgeNegative(){
-        assertThrows(AgeNegativeException.class, () -> persona1.age());
-    }
-
-
-     */
-
-     //hazme un test que compruebe que si la edad es negativa, se lanza una excepción
-
 
 }

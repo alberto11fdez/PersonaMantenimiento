@@ -27,6 +27,6 @@ public class main {
         List<Persona> lista1 = new LinkedList<Persona>();
 
 
-        System.out.println(p1.averageAgePerGender(lista1));
+        System.out.println(p1.averageAgePerGender(lista));
     }
 }

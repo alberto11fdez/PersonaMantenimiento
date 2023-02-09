@@ -1,5 +1,4 @@
 package org.persona;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -23,33 +22,32 @@ public class Persona {
 
     public Persona(String name, int age, String gender){
         this.name = name;
-
-        if(age < 0 || age > 150){
-            throw new AgeNegativeException("No puedes no haber nacido o ser un muerto viviente");
-        }else{
-            this.age = age;
-        }
-
-        if(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE")){
-            this.gender = gender.toUpperCase();
-        }else{
-            throw new NoGenderException("No existe ese genero");
-        }
-
+        this.age = age;
+        this.gender=gender;
     }
 
     public String name(){
-        return name;
+        if(name == ""){
+            throw new NameEmptyException("No puede dejar el nombre vacio");
+        }else {
+            return name;
+        }
     }
 
     public int age() {
-
-        return age;
+        if(age < 0 || age > 150){
+            throw new AgeNegativeException("No puedes no haber nacido o ser un muerto viviente");
+        }else{
+            return age;
+        }
     }
 
     public String gender(){
-
-        return gender;
+        if(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE")){
+            return gender.toUpperCase();
+        }else{
+            throw new NoGenderException("No existe ese genero");
+        }
     }
 
     /**
