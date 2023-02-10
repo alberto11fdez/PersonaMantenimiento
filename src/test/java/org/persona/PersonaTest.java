@@ -14,18 +14,6 @@ public class PersonaTest {
 //Name------------------------------------------------------------------------------------------------------------------
 
     /**
-     * Comprueba que el nombre de la persona no esta vacio. En caso contrario, el assert indicará el fallo.
-     */
-    @Test
-    void NameOfPersonIsNotEmpty(){
-        String name = persona.name();
-        String expectedValue = "";
-
-        assertNotEquals(expectedValue.toLowerCase(),name.toLowerCase());
-    }
-
-
-    /**
      * Comprueba que el nombre de la persona es justamente "David". En caso contrario, el assert indicará el fallo.
      */
     @Test
@@ -35,13 +23,31 @@ public class PersonaTest {
         assertEquals(expectedValue.toUpperCase(), name1.toUpperCase());
     }
 
+
+    /**
+     * Comprueba que el nombre de la persona no esta vacio. En caso contrario, el assert indicará el fallo.
+     */
+    @Test
+    void NameOfPersonIsNotEmpty(){
+        Persona p1 = new Persona("", 2, "male");
+        assertThrows(NameEmptyException.class, () -> p1.name().equals(""));
+    }
+
+    /**
+     * Comprueba que el nombre de la persona no esta vacio. En caso contrario, el assert indicará el fallo.
+     */
     /*
     @Test
     void NameOfPersonIsNotEmpty(){
-        assertThrows(NameEmptyException.class, () -> persona.name());
+        String name = persona.name();
+        String expectedValue = "";
+
+        assertNotEquals(expectedValue.toLowerCase(),name.toLowerCase());
     }
 
      */
+
+
 
 //Gender----------------------------------------------------------------------------------------------------------------
 
@@ -64,7 +70,6 @@ public class PersonaTest {
     @Test
     void GenderOfPersonIsMaleOrFemale(){
         String gender = persona.gender();
-        String expectedValue = "";
 
         assertTrue(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE"));
     }
@@ -81,13 +86,19 @@ public class PersonaTest {
 
         assertEquals(expectedValue.toLowerCase(),gender.toLowerCase());
     }
-/*
+
+
+    /**
+     * Comprueba que el género de la persona no se encuentre vacio. En caso de estar vacío, lanza la excepción
+     * GenderEmptyException.
+     */
     @Test
     void GenderPersonNotExist(){
-        assertThrows(GenderPersonNotExist().class, () -> persona.gender());
+        Persona p1 = new Persona("Marcos", 19, "");
+        assertThrows(GenderEmptyException.class, () -> p1.gender().equals(""));
     }
 
- */
+
 
 //Age-------------------------------------------------------------------------------------------------------------------
 
@@ -112,13 +123,14 @@ public class PersonaTest {
         assertTrue(age>=0 && age<=130);
     }
 
-    /*
+
     @Test
     void AgeOfPersoneNotNegative(){
-        assertThrows(AgeNegativeException.class, () -> persona.age());
-    }
+        Persona p1 = new Persona("Alberto", 1112, "Male");
+        //Persona p1 = new Persona("Alberto", -111, "Male");
+        assertThrows(AgeOutOfRangeException.class, () -> p1.age());
 
-     */
+    }
 
 //Average---------------------------------------------------------------------------------------------------------------
 

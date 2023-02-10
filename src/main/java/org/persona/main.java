@@ -28,5 +28,8 @@ public class main {
 
 
         System.out.println(p1.averageAgePerGender(lista));
+
+
+        //Persona p = new Persona("lucia", , "Male");
     }
 }

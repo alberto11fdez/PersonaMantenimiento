@@ -62,7 +62,7 @@ public class Persona {
         if(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE")){
             return gender.toUpperCase();
         }else{
-            throw new NoGenderException("No existe ese genero");
+            throw new GenderEmptyException("No existe ese genero");
         }
     }
 
