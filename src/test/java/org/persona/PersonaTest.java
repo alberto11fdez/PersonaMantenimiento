@@ -32,6 +32,14 @@ public class PersonaTest {
         assertThrows(AgeNegativeException.class, () -> persona1.age());
     }
 
+    @Test
+    void prueba(){
+       String s="h";
+       String n="h";
+
+       assertEquals(s,n);
+    }
+
 
 
 }
