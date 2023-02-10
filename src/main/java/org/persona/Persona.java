@@ -26,6 +26,11 @@ public class Persona {
         this.gender=gender;
     }
 
+    /**
+     * Get de name, devulve el nombre de la persona o lanza una excepción NameEmptyException si el nombre esta vacio
+     * después de haberlo introducido en el constructor.
+     * @return
+     */
     public String name(){
         if(name == ""){
             throw new NameEmptyException("No puede dejar el nombre vacio");
@@ -34,14 +39,25 @@ public class Persona {
         }
     }
 
+    /**
+     * Get de age, devulve la edad de la persona o lanza una excepción AgeOutOfRangeException si es negativo o mayor de 130 (número relativo por
+     * si alguna persona vive más años de los que vivio Jeanne Calment -> 122 años y 164 días).
+     * @return
+     */
+
     public int age() {
-        if(age < 0 || age > 150){
-            throw new AgeNegativeException("No puedes no haber nacido o ser un muerto viviente");
+        if(age < 0 || age > 130){
+            throw new AgeOutOfRangeException("No puedes no haber nacido o ser un muerto viviente");
         }else{
             return age;
         }
     }
 
+    /**
+     * Get de gender, devuelve el género de la persona o lanza una excepción NoGenderException si el genero no coincide
+     * con los generos predefinidos, Male y Female.
+     * @return
+     */
     public String gender(){
         if(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE")){
             return gender.toUpperCase();
