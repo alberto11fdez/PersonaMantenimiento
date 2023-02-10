@@ -26,11 +26,12 @@ public class PersonTest {
 
     /**
      * Comprueba que el nombre de la persona no esta vacio. En caso contrario, el assert indicará el fallo.
+     * .isBlank() es un boolean que devuelve true si p1.name() esta vacío o tiene la cadena vacía.
      */
     @Test
     void NameOfPersonIsNotEmpty(){
         Person p1 = new Person("", 2, "male");
-        assertThrows(NameEmptyException.class, () -> p1.name().equals(""));
+        assertThrows(NameEmptyException.class, () -> p1.name().isBlank());
     }
 
     /**
@@ -91,11 +92,12 @@ public class PersonTest {
     /**
      * Comprueba que el género de la persona no se encuentre vacio. En caso de estar vacío, lanza la excepción
      * GenderEmptyException.
+     * .isBlank() es un boolean que devuelve true si p1.gender() esta vacío o tiene la cadena vacía.
      */
     @Test
     void GenderPersonNotExist(){
         Person p1 = new Person("Marcos", 19, "");
-        assertThrows(GenderEmptyException.class, () -> p1.gender().equals(""));
+        assertThrows(GenderEmptyException.class, () -> p1.gender().isBlank());
     }
 
 
