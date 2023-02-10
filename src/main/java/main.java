@@ -1,18 +1,18 @@
-package org.persona;
+import org.persona.Person;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class main {
     public static void main(String[] args) {
-        Persona p1 = new Persona("Pepe", 12, "mAle");
-        Persona p2 = new Persona("Juan", 70, "MaLe");
-        Persona p3 = new Persona("Alberto", 20, "maLe");
-        Persona p4 = new Persona("Lucia", 12, "male");
-        Persona p5 = new Persona("Barbara", 20, "male");
-        Persona p6 = new Persona("Marta", 70, "male");
+        Person p1 = new Person("Pepe", 12, "mAle");
+        Person p2 = new Person("Juan", 70, "MaLe");
+        Person p3 = new Person("Alberto", 20, "maLe");
+        Person p4 = new Person("Lucia", 12, "male");
+        Person p5 = new Person("Barbara", 20, "male");
+        Person p6 = new Person("Marta", 70, "male");
 
-        List<Persona> lista = new LinkedList<Persona>();
+        List<Person> lista = new LinkedList<Person>();
         lista.add(p1);
         lista.add(p2);
         lista.add(p3);
@@ -20,11 +20,11 @@ public class main {
         lista.add(p5);
         lista.add(p6);
 
-        Persona x = new Persona("a",1,"male");
+        Person x = new Person("a",1,"male");
 
         System.out.println("Media Hombre: " + x.averageAgePerGender(lista)[0] + ", Media Mujeres: " + x.averageAgePerGender(lista)[1]);
 
-        List<Persona> lista1 = new LinkedList<Persona>();
+        List<Person> lista1 = new LinkedList<Person>();
 
 
         System.out.println(p1.averageAgePerGender(lista));

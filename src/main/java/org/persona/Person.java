@@ -7,7 +7,7 @@ import java.util.List;
  * @author Alberto Fernández Ramos
  */
 
-public class Persona {
+public class Person {
     private final String name;
     private final int age;
     private final String gender; //Male, Female
@@ -20,7 +20,7 @@ public class Persona {
      * @param gender the gender of the person
      */
 
-    public Persona(String name, int age, String gender){
+    public Person(String name, int age, String gender){
         this.name = name;
         this.age = age;
         this.gender=gender;
@@ -75,7 +75,7 @@ public class Persona {
      * @return
      */
 
-    public double[] averageAgePerGender(List<Persona> persons){
+    public double[] averageAgePerGender(List<Person> persons){
 
         int contMale=0;
         int contFemale=0;

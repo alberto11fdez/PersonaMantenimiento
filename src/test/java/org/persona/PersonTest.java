@@ -7,8 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class PersonaTest {
-    Persona persona = new Persona("David",20,"male");
+public class PersonTest {
+    Person person = new Person("David",20,"male");
     //Persona p1 = new Persona("", 20, "male");
 
 //Name------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ public class PersonaTest {
      */
     @Test
     void NameOfThePerson(){
-        String name1 = persona.name();
+        String name1 = person.name();
         String expectedValue = "David";
         assertEquals(expectedValue.toUpperCase(), name1.toUpperCase());
     }
@@ -29,7 +29,7 @@ public class PersonaTest {
      */
     @Test
     void NameOfPersonIsNotEmpty(){
-        Persona p1 = new Persona("", 2, "male");
+        Person p1 = new Person("", 2, "male");
         assertThrows(NameEmptyException.class, () -> p1.name().equals(""));
     }
 
@@ -57,7 +57,7 @@ public class PersonaTest {
      */
     @Test
     void GenderOfPersonIsNotEmpty(){
-        String gender = persona.gender();
+        String gender = person.gender();
         String expectedValue = "";
 
         assertTrue(!gender.toUpperCase().equals(expectedValue) || !gender.toUpperCase().equals(expectedValue));
@@ -69,7 +69,7 @@ public class PersonaTest {
       */
     @Test
     void GenderOfPersonIsMaleOrFemale(){
-        String gender = persona.gender();
+        String gender = person.gender();
 
         assertTrue(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE"));
     }
@@ -81,7 +81,7 @@ public class PersonaTest {
     @Test
     void GenderOfPerson(){
 
-        String gender = persona.gender();
+        String gender = person.gender();
         String expectedValue = "Male";
 
         assertEquals(expectedValue.toLowerCase(),gender.toLowerCase());
@@ -94,7 +94,7 @@ public class PersonaTest {
      */
     @Test
     void GenderPersonNotExist(){
-        Persona p1 = new Persona("Marcos", 19, "");
+        Person p1 = new Person("Marcos", 19, "");
         assertThrows(GenderEmptyException.class, () -> p1.gender().equals(""));
     }
 
@@ -107,7 +107,7 @@ public class PersonaTest {
      */
     @Test
     void AgeOfPerson(){
-       int age = persona.age();
+       int age = person.age();
        int expectedValue = 20;
        assertEquals(expectedValue,age);
     }
@@ -119,14 +119,14 @@ public class PersonaTest {
      */
     @Test
     void AgeOfPersonRange(){
-        int age = persona.age();
+        int age = person.age();
         assertTrue(age>=0 && age<=130);
     }
 
 
     @Test
     void AgeOfPersoneNotNegative(){
-        Persona p1 = new Persona("Alberto", 1112, "Male");
+        Person p1 = new Person("Alberto", 1112, "Male");
         //Persona p1 = new Persona("Alberto", -111, "Male");
         assertThrows(AgeOutOfRangeException.class, () -> p1.age());
 
@@ -141,14 +141,14 @@ public class PersonaTest {
     @Test
     void CheckAverageWithMalesAndFemales(){
 
-        Persona p1 = new Persona("Pepe", 12, "mAle");
-        Persona p2 = new Persona("Juan", 70, "MaLe");
-        Persona p3 = new Persona("Alberto", 20, "maLe");
-        Persona p4 = new Persona("Lucia", 12, "Female");
-        Persona p5 = new Persona("Barbara", 20, "female");
-        Persona p6 = new Persona("Marta", 70, "fEmAlE");
+        Person p1 = new Person("Pepe", 12, "mAle");
+        Person p2 = new Person("Juan", 70, "MaLe");
+        Person p3 = new Person("Alberto", 20, "maLe");
+        Person p4 = new Person("Lucia", 12, "Female");
+        Person p5 = new Person("Barbara", 20, "female");
+        Person p6 = new Person("Marta", 70, "fEmAlE");
 
-        List<Persona> lista = new LinkedList<Persona>();
+        List<Person> lista = new LinkedList<Person>();
         lista.add(p1);
         lista.add(p2);
         lista.add(p3);
@@ -156,7 +156,7 @@ public class PersonaTest {
         lista.add(p5);
         lista.add(p6);
 
-       double[] media = persona.averageAgePerGender(lista);
+       double[] media = person.averageAgePerGender(lista);
        double[] expectedValue = new double[2];
        expectedValue[0] = 34;
        expectedValue[1] = 34;
@@ -172,18 +172,18 @@ public class PersonaTest {
     @Test
     void CheckAverageWithOnlyMales(){
 
-        Persona p1 = new Persona("Pepe", 12, "mAle");
-        Persona p2 = new Persona("Juan", 70, "MaLe");
-        Persona p3 = new Persona("Alberto", 20, "maLe");
+        Person p1 = new Person("Pepe", 12, "mAle");
+        Person p2 = new Person("Juan", 70, "MaLe");
+        Person p3 = new Person("Alberto", 20, "maLe");
 
 
-        List<Persona> lista = new LinkedList<Persona>();
+        List<Person> lista = new LinkedList<Person>();
         lista.add(p1);
         lista.add(p2);
         lista.add(p3);
 
 
-        double[] media = persona.averageAgePerGender(lista);
+        double[] media = person.averageAgePerGender(lista);
         double[] expectedValue = new double[2];
         expectedValue[0] = 34;
         expectedValue[1] = 0;
@@ -198,16 +198,16 @@ public class PersonaTest {
     @Test
     void CheckAverageWithOnlyFemales(){
 
-        Persona p4 = new Persona("Lucia", 12, "Female");
-        Persona p5 = new Persona("Barbara", 20, "feMale");
-        Persona p6 = new Persona("Marta", 70, "female");
+        Person p4 = new Person("Lucia", 12, "Female");
+        Person p5 = new Person("Barbara", 20, "feMale");
+        Person p6 = new Person("Marta", 70, "female");
 
-        List<Persona> lista = new LinkedList<Persona>();
+        List<Person> lista = new LinkedList<Person>();
         lista.add(p4);
         lista.add(p5);
         lista.add(p6);
 
-        double[] media = persona.averageAgePerGender(lista);
+        double[] media = person.averageAgePerGender(lista);
         double[] expectedValue = new double[2];
         expectedValue[0] = 0;
         expectedValue[1] = 34;
@@ -222,7 +222,7 @@ public class PersonaTest {
      */
     @Test
     void CheckAverageEmpty(){
-        assertThrows(AverageEmpty.class, () -> persona.averageAgePerGender(new LinkedList<>()));
+        assertThrows(AverageEmpty.class, () -> person.averageAgePerGender(new LinkedList<>()));
 
     }
 
