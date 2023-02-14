@@ -8,8 +8,6 @@ import java.util.List;
 
 
 public class PersonTest {
-    Person person = new Person("David",20,"male");
-    //Persona p1 = new Persona("", 20, "male");
 
 //Name------------------------------------------------------------------------------------------------------------------
 
@@ -18,9 +16,9 @@ public class PersonTest {
      */
     @Test
     void NameOfThePerson(){
-        String name1 = person.name();
+        Person person = new Person("David",20,"male");
         String expectedValue = "David";
-        assertEquals(expectedValue.toUpperCase(), name1.toUpperCase());
+        assertEquals(expectedValue.toUpperCase(), person.name().toUpperCase());
     }
 
 
@@ -58,10 +56,10 @@ public class PersonTest {
      */
     @Test
     void GenderOfPersonIsNotEmpty(){
-        String gender = person.gender();
+        Person person = new Person("David",20,"male");
         String expectedValue = "";
 
-        assertTrue(!gender.toUpperCase().equals(expectedValue) || !gender.toUpperCase().equals(expectedValue));
+        assertTrue(!person.gender().toUpperCase().equals(expectedValue) || !person.gender().toUpperCase().equals(expectedValue));
     }
 
     /**
@@ -70,9 +68,9 @@ public class PersonTest {
       */
     @Test
     void GenderOfPersonIsMaleOrFemale(){
-        String gender = person.gender();
+        Person person = new Person("David",20,"male");;
 
-        assertTrue(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE"));
+        assertTrue(person.gender().toUpperCase().equals("MALE") || person.gender().toUpperCase().equals("FEMALE"));
     }
 
     /**
@@ -82,10 +80,10 @@ public class PersonTest {
     @Test
     void GenderOfPerson(){
 
-        String gender = person.gender();
+        Person person = new Person("David",20,"male");
         String expectedValue = "Male";
 
-        assertEquals(expectedValue.toLowerCase(),gender.toLowerCase());
+        assertEquals(expectedValue.toUpperCase(),person.gender().toUpperCase());
     }
 
 
@@ -109,9 +107,9 @@ public class PersonTest {
      */
     @Test
     void AgeOfPerson(){
-       int age = person.age();
+        Person person = new Person("David",20,"male");
        int expectedValue = 20;
-       assertEquals(expectedValue,age);
+       assertEquals(expectedValue,person.age());
     }
 
 
@@ -121,15 +119,14 @@ public class PersonTest {
      */
     @Test
     void AgeOfPersonRange(){
-        int age = person.age();
-        assertTrue(age>=0 && age<=130);
+        Person person = new Person("David",20,"male");
+        assertTrue(person.age()>=0 && person.age()<=130);
     }
 
 
     @Test
     void AgeOfPersoneNotNegative(){
         Person p1 = new Person("Alberto", 1112, "Male");
-        //Persona p1 = new Persona("Alberto", -111, "Male");
         assertThrows(AgeOutOfRangeException.class, () -> p1.age());
 
     }
@@ -142,6 +139,8 @@ public class PersonTest {
      */
     @Test
     void CheckAverageWithMalesAndFemales(){
+
+        Person person = new Person("David",20,"male");
 
         Person p1 = new Person("Pepe", 12, "mAle");
         Person p2 = new Person("Juan", 70, "MaLe");
@@ -173,6 +172,7 @@ public class PersonTest {
 
     @Test
     void CheckAverageWithOnlyMales(){
+        Person person = new Person("David",20,"male");
 
         Person p1 = new Person("Pepe", 12, "mAle");
         Person p2 = new Person("Juan", 70, "MaLe");
@@ -199,6 +199,7 @@ public class PersonTest {
      */
     @Test
     void CheckAverageWithOnlyFemales(){
+        Person person = new Person("David",20,"male");
 
         Person p4 = new Person("Lucia", 12, "Female");
         Person p5 = new Person("Barbara", 20, "feMale");
@@ -224,6 +225,7 @@ public class PersonTest {
      */
     @Test
     void CheckAverageEmpty(){
+        Person person = new Person("David",20,"male");
         assertThrows(AverageEmpty.class, () -> person.averageAgePerGender(new LinkedList<>()));
 
     }
