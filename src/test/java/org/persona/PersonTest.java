@@ -23,55 +23,46 @@ public class PersonTest {
 
 
     /**
-     * Comprueba que el nombre de la persona no esta vacio. En caso contrario, el assert indicará el fallo.
+     * Comprueba que el nombre de la persona esta vacio. Si es así, el assert lanzará una excecpción con un mensaje de error.
      * .isBlank() es un boolean que devuelve true si p1.name() esta vacío o tiene la cadena vacía.
      */
     @Test
-    void NameOfPersonIsNotEmpty(){
-        Person p1 = new Person("", 2, "male");
-        assertThrows(NameEmptyException.class, () -> p1.name().isBlank());
+    void NameOfPersonIsEmpty(){
+        Person person = new Person("", 2, "male");
+        assertThrows(RuntimeException.class, () -> person.name().isBlank(), "Error: nombre vacio");
     }
-
-    /**
-     * Comprueba que el nombre de la persona no esta vacio. En caso contrario, el assert indicará el fallo.
-     */
-    /*
-    @Test
-    void NameOfPersonIsNotEmpty(){
-        String name = persona.name();
-        String expectedValue = "";
-
-        assertNotEquals(expectedValue.toLowerCase(),name.toLowerCase());
-    }
-
-     */
-
 
 
 //Gender----------------------------------------------------------------------------------------------------------------
 
     /**
-     * Comprueba que se introduzca un género para la persona. En caso contrario, el assert indicará que no se ha
-     * introducido el género de la persona y dará fallo.
+     * Comprueba que el género de la persona es vacio. Si es así, el assert lanzará una excepción con un mensaje de errorç
+     * indicando que no se ha introducido el género de la persona.
      */
     @Test
-    void GenderOfPersonIsNotEmpty(){
-        Person person = new Person("David",20,"male");
-        String expectedValue = "";
-
-        assertTrue(!person.gender().toUpperCase().equals(expectedValue) || !person.gender().toUpperCase().equals(expectedValue));
+    void GenderOfPersonIsEmpty(){
+        Person person = new Person("David",20,"");
+        assertThrows(RuntimeException.class, () -> person.gender().isEmpty(), "Error: género de la persona no introducido");
     }
 
     /**
      * Comprueba que el género introducido es male o female, sin importar mayúsculas o minúsculas. En caso de introducir,
      * cualquier otro string, el assert indicará el fallo.
       */
+    /*
     @Test
-    void GenderOfPersonIsMaleOrFemale(){
-        Person person = new Person("David",20,"male");;
-
-        assertTrue(person.gender().toUpperCase().equals("MALE") || person.gender().toUpperCase().equals("FEMALE"));
+    void GenderOfPersonIsMale(){
+        Person person = new Person("David",20,"male");
+        assertThrows(RuntimeException.class, () -> person.gender().toUpperCase().equals("MALE"),"Error: esta persona no es un hombre");
     }
+
+    @Test
+    void GenderOfPersonIsFemale(){
+        Person person = new Person("David",20,"FEMALE");
+        assertThrows(RuntimeException.class, () -> person.gender().compareTo("FEMALE") == 0,"Error: esta persona no es mujer");
+    }
+
+     */
 
     /**
      * Comprueba que el género introducido de esta persona es male. Si se modifica, y se introduce female o cualquier
@@ -95,7 +86,7 @@ public class PersonTest {
     @Test
     void GenderPersonNotExist(){
         Person p1 = new Person("Marcos", 19, "");
-        assertThrows(GenderEmptyException.class, () -> p1.gender().isBlank());
+        assertThrows(RuntimeException.class, () -> p1.gender().equals(""), "El genero de una persona no puede ser vacio");
     }
 
 
@@ -117,19 +108,21 @@ public class PersonTest {
      *  Comprueba que la edad introducida de la persona no esté fuera del rango de 0-130. En caso contrario, el assert
      *  indicará el fallo.
      */
+
     @Test
-    void AgeOfPersonRange(){
-        Person person = new Person("David",20,"male");
-        assertTrue(person.age()>=0 && person.age()<=130);
+    void AgeOfPersoneNotMoreThan130(){
+        Person person = new Person("Alberto", 131, "Male");
+        assertThrows(RuntimeException.class, () -> person.age(), "Error: Fuera de rango >=130 años");
+
     }
 
 
     @Test
     void AgeOfPersoneNotNegative(){
-        Person p1 = new Person("Alberto", 1112, "Male");
-        assertThrows(AgeOutOfRangeException.class, () -> p1.age());
-
+        Person person = new Person("Alberto", -1, "Male");
+        assertThrows(RuntimeException.class, () -> person.age(), "Error: Fuera de rango <=0 años (Negativo)");
     }
+
 
 //Average---------------------------------------------------------------------------------------------------------------
 
@@ -226,7 +219,7 @@ public class PersonTest {
     @Test
     void CheckAverageEmpty(){
         Person person = new Person("David",20,"male");
-        assertThrows(AverageEmpty.class, () -> person.averageAgePerGender(new LinkedList<>()));
+        assertThrows(RuntimeException.class, () -> person.averageAgePerGender(new LinkedList<>()));
 
     }
 

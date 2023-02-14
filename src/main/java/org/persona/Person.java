@@ -32,8 +32,8 @@ public class Person {
      * @return
      */
     public String name(){
-        if(name == ""){
-            throw new NameEmptyException("No puede dejar el nombre vacio");
+        if(name.equals("")){
+            throw new RuntimeException("No puede dejar el nombre vacio");
         }else {
             return name;
         }
@@ -47,7 +47,7 @@ public class Person {
 
     public int age() {
         if(age < 0 || age > 130){
-            throw new AgeOutOfRangeException("No puedes no haber nacido o ser un muerto viviente");
+            throw new RuntimeException("No puedes no haber nacido o ser un muerto viviente");
         }else{
             return age;
         }
@@ -60,9 +60,9 @@ public class Person {
      */
     public String gender(){
         if(gender.toUpperCase().equals("MALE") || gender.toUpperCase().equals("FEMALE")){
-            return gender.toUpperCase();
+            return gender;
         }else{
-            throw new GenderEmptyException("No existe ese genero");
+            throw new RuntimeException("No existe ese genero");
         }
     }
 
@@ -95,7 +95,7 @@ public class Person {
         }
 
         if(persons.isEmpty()){
-            throw new AverageEmpty("No existen personas");
+            throw new RuntimeException("No existen personas");
         }else if(ageMale == 0 ){
             average[0] = 0;
             average[1] = ageFemale/contFemale;
