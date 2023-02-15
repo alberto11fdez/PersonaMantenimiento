@@ -36,7 +36,7 @@ public class PersonTest {
 //Gender----------------------------------------------------------------------------------------------------------------
 
     /**
-     * Comprueba que el género de la persona es vacio. Si es así, el assert lanzará una excepción con un mensaje de errorç
+     * Comprueba que el género de la persona es vacio. Si es así, el assert lanzará una excepción con un mensaje de error
      * indicando que no se ha introducido el género de la persona.
      */
     @Test
@@ -46,25 +46,27 @@ public class PersonTest {
     }
 
     /**
-     * Comprueba que el género introducido es male o female, sin importar mayúsculas o minúsculas. En caso de introducir,
-     * cualquier otro string, el assert indicará el fallo.
-      */
-
+     * Comprueba si el género introducido es distinto de male, sin importar mayúsculas o minúsculas. En ese caso, se lanzará
+     * excepción con su correspondiente mensaje de error.
+     */
     @Test
-    void GenderOfPersonIsMale(){
+    void GenderOfPersonIsDiferentThatMale(){
         Person person = new Person("David",20,"hola");
         assertThrows(RuntimeException.class, () -> person.gender().toUpperCase().equals("MALE"),"Error: esta persona no es un hombre");
     }
 
+   /**
+     * Comprueba si el género introducido es distinto de female, sin importar mayúsculas o minúsculas. En ese caso, se lanzará
+     * excepción con su correspondiente mensaje de error.
+     */
     @Test
-    void GenderOfPersonIsFemale(){
+    void GenderOfPersonIsDiferentThatFemale(){
         Person person = new Person("David",20,"hola");
         assertThrows(RuntimeException.class, () -> person.gender().toUpperCase().equals("FEMALE") ,"Error: esta persona no es mujer");
     }
 
     /**
-     * Comprueba que el género de la persona no se encuentre vacio. En caso de estar vacío, lanza la excepción
-     * GenderEmptyException.
+     * Comprueba si el género de la persona se encuentre vacio. En caso de estar vacío, lanza excepción con un mensaje de error.
      * .isBlank() es un boolean que devuelve true si p1.gender() esta vacío o tiene la cadena vacía.
      */
     @Test
@@ -73,19 +75,24 @@ public class PersonTest {
         assertThrows(RuntimeException.class, () -> person.gender().equals(""), "El genero de una persona no puede ser la cadena vacia");
     }
 
-
+    /**
+     * Comprueba que el genero de la persona es male, indistintamente de mayusculas o minusculas. En caso contrario, el assert indicará el fallo.
+     */
     @Test
     void GenderOfDavid(){
         Person person = new Person("David", 19, "MALE");
         String valorEsperado = "Male";
-        assertEquals(person.gender().toUpperCase(), valorEsperado.toUpperCase());
+        assertEquals(person.gender().toUpperCase(), valorEsperado.toUpperCase(), "Error: el genero de David no es correcto (male) ");
     }
 
+    /**
+     * Comprueba que el genero de la persona es female, indistintamente de mayusculas o minusculas. En caso contrario, el assert indicará el fallo.
+     */
     @Test
     void GenderOfBarbara(){
         Person person = new Person("Barbara", 19, "Female");
         String valorEsperado = "female";
-        assertEquals(person.gender().toUpperCase(), valorEsperado.toUpperCase());
+        assertEquals(person.gender().toUpperCase(), valorEsperado.toUpperCase(), "Error: el genero de Barbara no es correcto (female) ");
     }
 
 
@@ -104,22 +111,24 @@ public class PersonTest {
 
 
     /**
-     *  Comprueba que la edad introducida de la persona no esté fuera del rango de 0-130. En caso contrario, el assert
-     *  indicará el fallo.
+     *  Comprueba que la edad introducida de la persona no es mayor de 130 años. En caso contrario, el assert
+     *  lanzará excepción, indicando el error.
      */
-
     @Test
-    void AgeOfPersoneNotMoreThan130(){
+    void AgeOfPersoneMoreThan130(){
         Person person = new Person("Alberto", 131, "Male");
-        assertThrows(RuntimeException.class, () -> person.age(), "Error: Fuera de rango >=130 años");
+        assertThrows(RuntimeException.class, () -> person.age(), "Error: Fuera de rango, edad introducida >=130 años");
 
     }
 
-
+    /**
+     *  Comprueba que la edad introducida de la persona no es negativa. En caso contrario, el assert
+     *  lanzará excepción, indicando el error.
+     */
     @Test
-    void AgeOfPersoneNotNegative(){
+    void AgeOfPersoneNegative(){
         Person person = new Person("Alberto", -1, "Male");
-        assertThrows(RuntimeException.class, () -> person.age(), "Error: Fuera de rango <=0 años (Negativo)");
+        assertThrows(RuntimeException.class, () -> person.age(), "Error: Fuera de rango, edad introducida <=0 años (Negativo)");
     }
 
 
