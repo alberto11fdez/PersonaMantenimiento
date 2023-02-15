@@ -40,7 +40,7 @@ public class Person {
     }
 
     /**
-     * Get de age, devulve la edad de la persona o lanza una excepción AgeOutOfRangeException si es negativo o mayor de 130 (número relativo por
+     * Get de age, devulve la edad de la persona o lanza una excepción RuntimeException si es negativo o mayor de 130 (número relativo por
      * si alguna persona vive más años de los que vivio Jeanne Calment -> 122 años y 164 días).
      * @return
      */
@@ -85,11 +85,11 @@ public class Person {
         double [] average = new double[2];
 
         for (int i = 0; i < persons.size(); i++){
-            if(persons.get(i).gender.toUpperCase().equals("MALE")){
-                ageMale += persons.get(i).age;
+            if(persons.get(i).gender().toUpperCase().equals("MALE")){
+                ageMale += persons.get(i).age();
                 contMale++;
-            }else if(persons.get(i).gender.toUpperCase().equals("FEMALE")){
-                ageFemale += persons.get(i).age;
+            }else if(persons.get(i).gender().toUpperCase().equals("FEMALE")){
+                ageFemale += persons.get(i).age();
                 contFemale++;
             }
         }
