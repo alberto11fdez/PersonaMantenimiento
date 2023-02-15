@@ -15,10 +15,10 @@ public class PersonTest {
      * Comprueba que el nombre de la persona es justamente "David". En caso contrario, el assert indicará el fallo.
      */
     @Test
-    void NameOfThePerson(){
+    void NameOfThisPerson(){
         Person person = new Person("David",20,"male");
         String expectedValue = "David";
-        assertEquals(expectedValue.toUpperCase(), person.name().toUpperCase());
+        assertEquals(expectedValue.toUpperCase(), person.name().toUpperCase(),"Error: el nombre de esta persona no es David");
     }
 
 
@@ -49,34 +49,18 @@ public class PersonTest {
      * Comprueba que el género introducido es male o female, sin importar mayúsculas o minúsculas. En caso de introducir,
      * cualquier otro string, el assert indicará el fallo.
       */
-    /*
+
     @Test
     void GenderOfPersonIsMale(){
-        Person person = new Person("David",20,"male");
+        Person person = new Person("David",20,"hola");
         assertThrows(RuntimeException.class, () -> person.gender().toUpperCase().equals("MALE"),"Error: esta persona no es un hombre");
     }
 
     @Test
     void GenderOfPersonIsFemale(){
-        Person person = new Person("David",20,"FEMALE");
-        assertThrows(RuntimeException.class, () -> person.gender().compareTo("FEMALE") == 0,"Error: esta persona no es mujer");
+        Person person = new Person("David",20,"hola");
+        assertThrows(RuntimeException.class, () -> person.gender().toUpperCase().equals("FEMALE") ,"Error: esta persona no es mujer");
     }
-
-     */
-
-    /**
-     * Comprueba que el género introducido de esta persona es male. Si se modifica, y se introduce female o cualquier
-     * otro string el assert indicará el fallo.
-     */
-    @Test
-    void GenderOfPerson(){
-
-        Person person = new Person("David",20,"male");
-        String expectedValue = "Male";
-
-        assertEquals(expectedValue.toUpperCase(),person.gender().toUpperCase());
-    }
-
 
     /**
      * Comprueba que el género de la persona no se encuentre vacio. En caso de estar vacío, lanza la excepción
@@ -84,9 +68,24 @@ public class PersonTest {
      * .isBlank() es un boolean que devuelve true si p1.gender() esta vacío o tiene la cadena vacía.
      */
     @Test
-    void GenderPersonNotExist(){
-        Person p1 = new Person("Marcos", 19, "");
-        assertThrows(RuntimeException.class, () -> p1.gender().equals(""), "El genero de una persona no puede ser vacio");
+    void GenderPersonIsAEmptyString(){
+        Person person = new Person("Marcos", 19, "");
+        assertThrows(RuntimeException.class, () -> person.gender().equals(""), "El genero de una persona no puede ser la cadena vacia");
+    }
+
+
+    @Test
+    void GenderOfDavid(){
+        Person person = new Person("David", 19, "MALE");
+        String valorEsperado = "Male";
+        assertEquals(person.gender().toUpperCase(), valorEsperado.toUpperCase());
+    }
+
+    @Test
+    void GenderOfBarbara(){
+        Person person = new Person("Barbara", 19, "Female");
+        String valorEsperado = "female";
+        assertEquals(person.gender().toUpperCase(), valorEsperado.toUpperCase());
     }
 
 
@@ -130,6 +129,22 @@ public class PersonTest {
      * Realiza la media de 3 hombres y 3 mujeres y comprueba que cada una tiene un valor de 34.
      * (Caso en el que hay hombres y mujeres).
      */
+/*
+    @Test
+    void a(){
+        Person person = new Person("David",20,"male");
+        Person person1 = new Person("David",20,"male");
+        Person person2 = new Person("Lucia",20,"female");
+
+        List<Person> lista = new LinkedList<Person>();
+        lista.add(person1);
+        lista.add(person2);
+        assertThrows(RuntimeException.class, () -> person.averageAgePerGender(lista), "No se puede hacer media de mujeres");
+    }
+
+ */
+
+
     @Test
     void CheckAverageWithMalesAndFemales(){
 
@@ -157,6 +172,7 @@ public class PersonTest {
        assertEquals(expectedValue[0], media[0]);
        assertEquals(expectedValue[1], media[1]);
     }
+
 
     /**
      * Realiza la media de 3 hombres y comprueba que tiene un valor de 34 y la media de las mujeres (al no haber) es 0.
@@ -186,10 +202,14 @@ public class PersonTest {
         assertEquals(expectedValue[1], media[1]);
     }
 
+
+
     /**
      * Realiza la media de 3 mujeres y comprueba que tiene un valor de 34 y la media de los hombres (al no haber) es 0.
      * (Caso en el que hay mujeres, pero no hombres).
      */
+
+
     @Test
     void CheckAverageWithOnlyFemales(){
         Person person = new Person("David",20,"male");
@@ -216,6 +236,7 @@ public class PersonTest {
      * la excepción AverageEmpty para indicarlo.
      * (Caso en el que no hay ni hombres ni mujeres).
      */
+
     @Test
     void CheckAverageEmpty(){
         Person person = new Person("David",20,"male");
